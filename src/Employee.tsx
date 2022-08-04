@@ -10,7 +10,7 @@ export class Employee {
   ) {
     this.position = position;
     this.salary = salary;
-    this.bonus = bonus;
+    this.bonus = this.salary * bonus;
   }
 
   //getter
@@ -35,16 +35,16 @@ export class CEO extends Employee {
   ) {
     super(salary, bonus, position);
     this.salary = salary + 25000;
-    this.bonus = this.salary * bonus;
+    // this.bonus = this.salary * bonus;
   }
 
   getSalary() {
     return this.salary;
   }
 
-  getBonus() {
-    return this.bonus;
-  }
+  // getBonus() {
+  //   return this.bonus;
+  // }
 }
 
 export class Junior extends Employee {
@@ -55,16 +55,16 @@ export class Junior extends Employee {
   ) {
     super(salary, bonus, position);
     this.salary = salary + 15000;
-    this.bonus = this.salary * bonus;
+    // this.bonus = this.salary * bonus;
   }
 
   getSalary() {
     return this.salary;
   }
 
-  getBonus() {
-    return this.bonus;
-  }
+  // getBonus() {
+  //   return this.bonus;
+  // }
 }
 
 export class Senior extends Employee {
@@ -75,16 +75,16 @@ export class Senior extends Employee {
   ) {
     super(salary, bonus, position);
     this.salary = salary + 20000;
-    this.bonus = this.salary * bonus;
+    // this.bonus = this.salary * bonus;
   }
 
   getSalary() {
     return this.salary;
   }
 
-  getBonus() {
-    return this.bonus;
-  }
+  // getBonus() {
+  //   return this.bonus;
+  // }
 }
 
 export class Manager extends Employee {
@@ -95,14 +95,14 @@ export class Manager extends Employee {
   ) {
     super(salary, bonus, position);
     this.salary = salary + 23000;
-    this.bonus = this.salary * bonus;
+    // this.bonus = this.salary * bonus;
   }
 
   getSalary() {
     return this.salary;
   }
 
-  getBonus() {
-    return this.bonus;
-  }
+  // getBonus() {
+  //   return this.bonus;
+  // }
 }

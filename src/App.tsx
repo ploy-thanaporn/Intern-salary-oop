@@ -7,6 +7,7 @@ function App() {
   const junior = new Junior("Junior", 25000, 2);
   const senior = new Senior("Senior", 25000, 3);
   const manager = new Manager("Manager", 25000, 3);
+
   // new Employee(new CEOSalary("g", 20000, "CEO"));
 
   return (
