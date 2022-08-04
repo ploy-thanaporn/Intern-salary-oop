@@ -14,6 +14,9 @@ export class Employee {
   }
 
   //getter
+  getPosition(): string {
+    return this.position;
+  }
 
   getSalary() {
     return this.salary;
@@ -33,10 +36,6 @@ export class CEO extends Employee {
     super(salary, bonus, position);
     this.salary = salary + 25000;
     this.bonus = this.salary * bonus;
-  }
-
-  getPosition(): string {
-    return this.position;
   }
 
   getSalary() {
@@ -59,10 +58,6 @@ export class Junior extends Employee {
     this.bonus = this.salary * bonus;
   }
 
-  getPosition(): string {
-    return this.position;
-  }
-
   getSalary() {
     return this.salary;
   }
@@ -83,10 +78,6 @@ export class Senior extends Employee {
     this.bonus = this.salary * bonus;
   }
 
-  getPosition(): string {
-    return this.position;
-  }
-
   getSalary() {
     return this.salary;
   }
@@ -105,10 +96,6 @@ export class Manager extends Employee {
     super(salary, bonus, position);
     this.salary = salary + 23000;
     this.bonus = this.salary * bonus;
-  }
-
-  getPosition(): string {
-    return this.position;
   }
 
   getSalary() {
