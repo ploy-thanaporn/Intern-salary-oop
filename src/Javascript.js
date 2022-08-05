@@ -28,7 +28,6 @@ function findLargestSumPair(num) {
 
   // หา first and second largest จาก array ที่เหลือ
   for (let i = 2; i < num.length; i++) {
-    /* If current element is greateพ than first then update both first and second */
     if (num[i] > first) {
       second = first;
       first = num[i];
