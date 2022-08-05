@@ -5,10 +5,12 @@ const str =
 
 let newStr = " ";
 // str.length - 1 => last char , i > 0 => first char
-for (let i = str.length - 1; i > 0; i--) {
+for (let i = str.length - 1; i >= 0; i--) {
   newStr += str[i];
 }
 console.log(newStr);
 
 // const newStr = str.split("");
 // console.log(newStr.reverse().join(""));
+
+//  2.
