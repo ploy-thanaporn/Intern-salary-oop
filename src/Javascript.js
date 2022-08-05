@@ -96,3 +96,34 @@ if (arr1 > arr2) {
 } else {
   console.log("The largest sum of any two arrays is " + arr2);
 }
+
+// 4.How would you count total number of zeros from 1 up to n?
+
+function firstZero(ar, low, high) {
+  if (high >= low) {
+    // Check mid element first = 0
+    let mid = low + parseInt((high - low) / 2);
+    if ((mid == 0 || ar[mid - 1] == 1) && ar[mid] == 0) return mid;
+
+    if (arr[mid] == 1)
+      // If mid element != 0
+      return firstZero(ar, mid + 1, high);
+    // If mid element is 0, but not first 0
+    else return firstZero(ar, low, mid - 1);
+  }
+  return -1;
+}
+
+function countZeroes(ar, n) {
+  // Find index of first zero
+  let first = firstZero(ar, 0, n - 1);
+
+  // If 0 is not present , return 0
+  if (first == -1) return 0;
+
+  return n - first;
+}
+
+let ar = [1, 1, 1, 0, 0, 0, 0, 0];
+let n = ar.length;
+console.log("Count of zeroes is " + countZeroes(ar, n));
