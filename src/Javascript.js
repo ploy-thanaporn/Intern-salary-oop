@@ -99,31 +99,39 @@ if (arr1 > arr2) {
 
 // 4.How would you count total number of zeros from 1 up to n?
 
-function firstZero(ar, low, high) {
-  if (high >= low) {
-    // Check mid element first = 0
-    let mid = low + parseInt((high - low) / 2);
-    if ((mid == 0 || ar[mid - 1] == 1) && ar[mid] == 0) return mid;
+const array = [10, 20, 30, 40, 0];
+const zeroCount = array.join("").match(/0/g).length;
+console.log("Count of zeroes is " + zeroCount);
 
-    if (arr[mid] == 1)
-      // If mid element != 0
-      return firstZero(ar, mid + 1, high);
-    // If mid element is 0, but not first 0
-    else return firstZero(ar, low, mid - 1);
+// 5. How would you display prime number up to n?
+function isPrime(n) {
+  if (n == 1 || n == 0) return false;
+
+  for (let i = 2; i < n; i++) {
+    //  n != prime number
+    if (n % i == 0) return false;
   }
-  return -1;
+  // n = prime number.
+  return true;
 }
 
-function countZeroes(ar, n) {
-  // Find index of first zero
-  let first = firstZero(ar, 0, n - 1);
+let N = 25;
 
-  // If 0 is not present , return 0
-  if (first == -1) return 0;
-
-  return n - first;
+let temp = [];
+for (let i = 1; i <= N; i++) {
+  // number is prime
+  if (isPrime(i)) {
+    temp.push(i);
+  }
 }
 
-let ar = [1, 1, 1, 0, 0, 0, 0, 0];
-let n = ar.length;
-console.log("Count of zeroes is " + countZeroes(ar, n));
+console.log(`Prime number are ${temp}`);
+
+// 6. If you have a string like "I am the good boy". How can you generate "I ma eht doog yob"?
+// Please note that the words are in place but reverse.
+const text = "I am the good boy";
+
+function reverseString(str) {
+  return str.split("").reverse().join("");
+}
+console.log(reverseString(text));
