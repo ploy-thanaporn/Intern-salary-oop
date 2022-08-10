@@ -96,3 +96,42 @@ if (arr1 > arr2) {
 } else {
   console.log("The largest sum of any two arrays is " + arr2);
 }
+
+// 4.How would you count total number of zeros from 1 up to n?
+
+const array = [10, 20, 30, 40, 0];
+const zeroCount = array.join("").match(/0/g).length;
+console.log("Count of zeroes is " + zeroCount);
+
+// 5. How would you display prime number up to n?
+function isPrime(n) {
+  if (n == 1 || n == 0) return false;
+
+  for (let i = 2; i < n; i++) {
+    //  n != prime number
+    if (n % i == 0) return false;
+  }
+  // n = prime number.
+  return true;
+}
+
+let N = 25;
+
+let temp = [];
+for (let i = 1; i <= N; i++) {
+  // number is prime
+  if (isPrime(i)) {
+    temp.push(i);
+  }
+}
+
+console.log(`Prime number are ${temp}`);
+
+// 6. If you have a string like "I am the good boy". How can you generate "I ma eht doog yob"?
+// Please note that the words are in place but reverse.
+const text = "I am the good boy";
+
+function reverseString(str) {
+  return str.split("").reverse().join("");
+}
+console.log(reverseString(text));
