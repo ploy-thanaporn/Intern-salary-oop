@@ -40,3 +40,59 @@ function findLargestSumPair(num) {
 console.log(
   "The largest sum of any two element is " + findLargestSumPair(number)
 );
+
+// 3. How would you find the largest sum of any two array without using javascript array method?
+
+arr1 = [1, 2, 3, 4, 5];
+arr2 = [10, 20, 30, 40, 50];
+
+function findLargestSumArray1(num1) {
+  let first, second;
+  if (num1[0] > num1[1]) {
+    first = num1[0];
+    second = num1[1];
+  } else {
+    first = num1[1];
+    second = num1[0];
+  }
+  // หา first and second largest จาก array ที่เหลือ
+  for (let i = 2; i < num1.length; i++) {
+    if (num1[i] > first) {
+      second = first;
+      first = num1[i];
+      //   กรณีเลขไม่ได้เรียง
+    } else if (num1[i] > second && num1[i] != first) second = num1[i];
+  }
+  arr1 = first + second;
+  return arr1;
+}
+
+function findLargestSumArray2(num2) {
+  let first, second;
+  if (num2[0] > num2[1]) {
+    first = num2[0];
+    second = num2[1];
+  } else {
+    first = num2[1];
+    second = num2[0];
+  }
+  // หา first and second largest จาก array ที่เหลือ
+  for (let i = 2; i < num2.length; i++) {
+    if (num2[i] > first) {
+      second = first;
+      first = num2[i];
+      //   กรณีเลขไม่ได้เรียง
+    } else if (num2[i] > second && num2[i] != first) second = num2[i];
+  }
+  arr2 = first + second;
+  return arr2;
+}
+
+ar1 = findLargestSumArray1(arr1);
+ar2 = findLargestSumArray2(arr2);
+
+if (arr1 > arr2) {
+  console.log("The largest sum of any two arrays is " + arr1);
+} else {
+  console.log("The largest sum of any two arrays is " + arr2);
+}
