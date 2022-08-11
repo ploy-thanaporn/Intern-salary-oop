@@ -12,12 +12,12 @@ const url = "2Scoops.cnx/files.json";
 function dowloading(url, callback) {
   console.log(`is loading from ${url}`);
   setTimeout(() => {
-    callback();
+    callback(url);
   }, 4000);
 }
 
-function complete() {
-  console.log("Success download");
+function complete(result) {
+  console.log(` download ${result} success`);
 }
 
 dowloading(url, complete);
