@@ -17,7 +17,7 @@ function dowloading(url, callback) {
 }
 
 function complete(result) {
-  console.log(` download ${result} success`);
+  console.log(`download ${result} success`);
 }
 
 dowloading(url, complete);
@@ -26,6 +26,9 @@ dowloading(url, complete);
 // ถ้ามีหลาย url ทำให้เรียก callback ซ้ำซ้อน (callback hell) แก้โดยใช้ Promise
 const connect = true;
 const url1 = "lauv.song/file1.json";
+const url2 = "keshi.song/file1.json";
+const url3 = "jeremy.song/file1.json";
+const url4 = "taylor.song/file1.json";
 
 function loading(url) {
   console.log(`is loading from ${url}`);
@@ -39,10 +42,23 @@ function loading(url) {
     }, 3000);
   });
 }
+// loading(url1)
+//   .then((output) => {
+//     console.log(output);
+//   })
+//   .catch((err) => {
+//     console.log(err);
+//   });
+
 loading(url1)
-  .then((output) => {
+  .then(function (output) {
     console.log(output);
+    return loading(url2);
   })
-  .catch((err) => {
-    console.log(err);
+  .then(function (output) {
+    console.log(output);
+    return loading(url3);
+  })
+  .then(function (output) {
+    console.log(output);
   });
