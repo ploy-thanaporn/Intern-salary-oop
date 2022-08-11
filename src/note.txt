@@ -1,0 +1,47 @@
+** ลักษณะการทำงาน javascript 
+1. non-blocking (Asynchronous) => ทำงานแบบไม่ต่อเนื่อง งานบางส่วนที่ต้องใช้เวลาจะถูกทำงาน
+ส่วนงานอื่นๆที่ไม่ต้องรอเวลาจะสามารถทำงานล่วงหน้าได้เลย
+    - setTimeout 
+    - setInterval
+    - Promise
+
+จัดการทำงานแบบ Asynchronous ให้เป็นลำดับขั้นตอน
+    - CallBack : CallBack Function = ถูกเรียกใช้งานเมื่ออีกฟังก์ชันทำงานเสร็จ
+    Ex.
+        ฟังกืชันปกติ
+        function cal(x, y) {
+            return x + y;
+        }
+
+        function display(result) {
+            console.log(`sum = ${result}`);
+        }
+
+        const sum = cal(100, 200);
+        display(sum);
+
+        CallBack fuc 
+            function cal(x, y, callBack) {
+                callback func
+                setTimeout(() => {
+                    const sum = x + y;
+                    callBack(sum);
+                });
+            }
+
+            function display(result) {
+                console.log(`sum = ${result}`);
+            }
+
+            cal(100, 200, display);  or  cal(100, 200, function (result) {
+                                            console.log(`sum = ${result}`);
+                                         });
+
+
+
+    - Promise
+    - Asyn & Await 
+    
+
+2. blocking (Synchronous) => ทำงานแบบเป้็นขั้นตอน จะหยุดรอจนกว่าจะทำงานเสร็จ
+    - confirm ทำการรอให้ผู้ใช้กรอกข้อมูลหรือยืนยัน 
