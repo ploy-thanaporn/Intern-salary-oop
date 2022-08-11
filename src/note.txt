@@ -20,7 +20,7 @@
         const sum = cal(100, 200);
         display(sum);
 
-        CallBack fuc 
+        **CallBack func 
             function cal(x, y, callBack) {
                 callback func
                 setTimeout(() => {
@@ -37,9 +37,41 @@
                                             console.log(`sum = ${result}`);
                                          });
 
-
-
     - Promise
+        - นำมาใช้งาน ให้รอระหว่างที่ผลลัพธ์ยังไม่เกิดขึ้น 
+        - ใช้งานที่มีลักษณะหน่วงเวลา หรืองานที่ต้องทำเบื้องหลัง แล้วจะมีผลเกิดขึ้นในเวลาต่อมา
+        - มี 3 สถานะ: 
+            pending: เป็นสถานะ default | ถ้าทำงานเสร็จจะเป็น resolve, ถ้าล้มเหลวจะเป็น reject
+            resolve/fulfilled: is paremeter of callback ซึ่งใช้กำหนดสถานะหากทำงาน (สำเร็จ)
+            reject: is paremeter of callback ซึ่งใช้กำหนดสถานะหากทำงาน (ผิดพลาด)
+        - method:
+            then() ใช้งานร่วมกับสถานะ resolve หรือเมื่อ Promise ทำงานสำเร็จ
+            catch() ใช้งานร่วมกับสถานะ reject หรือเมื่อ Promise ทำงานผิดพลาด
+            finally() ไม่ว่าผลลัพธ์ของสถานะจะเป็นอะไรให้ทำงานส่วนนี้ต่อได้เลย
+
+        Promise(function(resolve,reject){
+  
+        })
+
+        Ex.
+            let connect = true;
+
+            const downloading = new Promise(function (resolve, reject) {
+            if (connect) {
+                resolve("success");
+            } else {
+                reject("error");
+            }
+            });
+
+            downloading.then(result => {   
+
+            })
+            downloading.catch(result => {   
+
+            })
+            หริอ .then(result => { }) หลังฟังกืชันได้เลย
+
     - Asyn & Await 
     
 
