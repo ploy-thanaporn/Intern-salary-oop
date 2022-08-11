@@ -50,15 +50,24 @@ function loading(url) {
 //     console.log(err);
 //   });
 
-loading(url1)
-  .then(function (output) {
-    console.log(output);
-    return loading(url2);
-  })
-  .then(function (output) {
-    console.log(output);
-    return loading(url3);
-  })
-  .then(function (output) {
-    console.log(output);
-  });
+// loading(url1)
+//   .then(function (output) {
+//     console.log(output);
+//     return loading(url2);
+//   })
+//   .then(function (output) {
+//     console.log(output);
+//     return loading(url3);
+//   })
+//   .then(function (output) {
+//     console.log(output);
+//   });
+
+// Asyn & Await
+async function start() {
+  console.log(await loading(url1));
+  console.log(await loading(url2));
+  console.log(await loading(url3));
+  console.log(await loading(url4));
+}
+start();
