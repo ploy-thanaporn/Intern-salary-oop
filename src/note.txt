@@ -1,0 +1,87 @@
+** ลักษณะการทำงาน javascript 
+1. non-blocking (Asynchronous) => ทำงานแบบไม่ต่อเนื่อง งานบางส่วนที่ต้องใช้เวลาจะถูกทำงาน
+ส่วนงานอื่นๆที่ไม่ต้องรอเวลาจะสามารถทำงานล่วงหน้าได้เลย
+    - setTimeout 
+    - setInterval
+    - Promise
+
+จัดการทำงานแบบ Asynchronous ให้เป็นลำดับขั้นตอน
+    - CallBack : CallBack Function = ถูกเรียกใช้งานเมื่ออีกฟังก์ชันทำงานเสร็จ
+    Ex.
+        ฟังกืชันปกติ
+        function cal(x, y) {
+            return x + y;
+        }
+
+        function display(result) {
+            console.log(`sum = ${result}`);
+        }
+
+        const sum = cal(100, 200);
+        display(sum);
+
+        **CallBack func 
+            function cal(x, y, callBack) {
+                callback func
+                setTimeout(() => {
+                    const sum = x + y;
+                    callBack(sum);
+                });
+            }
+
+            function display(result) {
+                console.log(`sum = ${result}`);
+            }
+
+            cal(100, 200, display);  or  cal(100, 200, function (result) {
+                                            console.log(`sum = ${result}`);
+                                         });
+
+    - Promise
+        - นำมาใช้งาน ให้รอระหว่างที่ผลลัพธ์ยังไม่เกิดขึ้น 
+        - ใช้งานที่มีลักษณะหน่วงเวลา หรืองานที่ต้องทำเบื้องหลัง แล้วจะมีผลเกิดขึ้นในเวลาต่อมา
+        - มี 3 สถานะ: 
+            pending: เป็นสถานะ default | ถ้าทำงานเสร็จจะเป็น resolve, ถ้าล้มเหลวจะเป็น reject
+            resolve/fulfilled: is paremeter of callback ซึ่งใช้กำหนดสถานะหากทำงาน (สำเร็จ)
+            reject: is paremeter of callback ซึ่งใช้กำหนดสถานะหากทำงาน (ผิดพลาด)
+        - method:
+            then() ใช้งานร่วมกับสถานะ resolve หรือเมื่อ Promise ทำงานสำเร็จ
+            catch() ใช้งานร่วมกับสถานะ reject หรือเมื่อ Promise ทำงานผิดพลาด
+            finally() ไม่ว่าผลลัพธ์ของสถานะจะเป็นอะไรให้ทำงานส่วนนี้ต่อได้เลย
+        - ข้อเสีย คือ ต้องเรียกใช้ then ทุกครั้ง
+
+        Promise(function(resolve,reject){
+  
+        })
+
+        Ex.
+            let connect = true;
+
+            const downloading = new Promise(function (resolve, reject) {
+            if (connect) {
+                resolve("success");
+            } else {
+                reject("error");
+            }
+            });
+
+            downloading.then(result => {   
+
+            })
+            downloading.catch(result => {   
+
+            })
+            หริอ .then(result => { }) หลังฟังกืชันได้เลย
+
+    - Asyn & Await 
+        Asyn เขียนด้านหน้าตัวฟังก์ชันที่มีการเรียกใช้ promise
+        Await เขียนด้่านหน้าตัว promise เพื่อบอกว่ารูปแบบฟังกืชันที่เกิดขึ้นเป็น Asyn แต่จะใช้ Await ให้รอทำงานตัวนี้เสร็จก่อนถึงจะไปต่อได้ 
+
+        Ex.
+        api ภาพสินค้า (backend)-> frontend(แสดงภาพในเว็บ)
+        
+        ** api is promise เพราะ ต้องใช้เวลาในการดึงข้อมูล
+        api (promise) -> pending -> รอข้อมูลมาครบ (await) -> แสดงภาพ
+
+2. blocking (Synchronous) => ทำงานแบบเป้็นขั้นตอน จะหยุดรอจนกว่าจะทำงานเสร็จ
+    - confirm ทำการรอให้ผู้ใช้กรอกข้อมูลหรือยืนยัน 
